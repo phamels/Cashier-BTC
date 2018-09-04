@@ -137,10 +137,17 @@ exports.generateNewSegwitAddress = function () {
   let witnessScript = bitcoinjs.script.witnessPubKeyHash.output.encode(bitcoinjs.crypto.hash160(pubKey))
   let scriptPubKey = bitcoinjs.script.scriptHash.output.encode(bitcoinjs.crypto.hash160(witnessScript))
   let address = bitcoinjs.address.fromOutputScript(scriptPubKey)
+  //let address = keyPair.getAddress()
 
   if (config.testnet) {
     let testnet = bitcoinjs.networks.testnet
     keyPair = bitcoinjs.ECPair.makeRandom({ network: testnet })
+    address = keyPair.getAddress()
+  }
+
+  if (config.nix) {
+    let nixnet = bitcoinjs.networks.nix
+    keyPair = bitcoinjs.ECPair.makeRandom({ network: nix })
     address = keyPair.getAddress()
   }
 

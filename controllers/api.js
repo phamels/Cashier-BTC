@@ -35,6 +35,8 @@ router.get('/request_payment/:expect/:currency/:message/:seller/:customer/:callb
       break
     case 'BTC': exchangeRate = 1
       break
+    case 'NIX': exchangeRate = 0.0001
+      break  
     default:
       return res.send(JSON.stringify({'error': 'bad currency'}))
   }
