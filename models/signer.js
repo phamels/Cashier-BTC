@@ -131,13 +131,13 @@ exports.createRBFSegwitTransaction = function (txhex, addressReplaceMap, feeDelt
 }
 
 exports.generateNewSegwitAddress = function () {
-  
+
 if (config.testnet) {
   let network = bitcoinjs.networks.testnet
 } else if (config.nix) {
-  let network = bitcoinjs.network.nix
+  let network = bitcoinjs.networks.nix
 } else {
-  let network = bitcoinjs.network.bitcoin
+  let network = bitcoinjs.networks.bitcoin
 }
 
   let keyPair = bitcoinjs.ECPair.makeRandom({ network: network })
