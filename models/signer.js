@@ -159,6 +159,7 @@ exports.generateNewSegwitAddress = function () {
 
 exports.URI = function (paymentInfo) {
   let uri = 'bitcoin:'
+  if (config.nix) { let uri = 'nix' }
   uri += paymentInfo.address
   uri += '?amount='
   uri += parseFloat((paymentInfo.amount / 100000000))
