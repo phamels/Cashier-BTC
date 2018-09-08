@@ -140,7 +140,7 @@ if (config.testnet) {
   let network = bitcoinjs.networks.bitcoin
 }
 
-  let keyPair = bitcoinjs.ECPair.makeRandom({ network: network })
+  let keyPair = bitcoinjs.ECPair.makeRandom({ network: this.network })
   let pubKey = keyPair.getPublicKeyBuffer()
 
   let witnessScript = bitcoinjs.script.witnessPubKeyHash.output.encode(bitcoinjs.crypto.hash160(pubKey))
