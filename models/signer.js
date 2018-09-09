@@ -133,14 +133,14 @@ exports.createRBFSegwitTransaction = function (txhex, addressReplaceMap, feeDelt
 exports.generateNewSegwitAddress = function () {
 
 if (config.testnet) {
-  let network = bitcoinjs.networks.testnet
+  let net = bitcoinjs.networks.testnet
 } else if (config.nix) {
-  let network = bitcoinjs.networks.nix
+  let net = bitcoinjs.networks.nix
 } else {
-  let network = bitcoinjs.networks.bitcoin
+  let net = bitcoinjs.networks.bitcoin
 }
 
-  let keyPair = bitcoinjs.ECPair.makeRandom({ network: this.network })
+  let keyPair = bitcoinjs.ECPair.makeRandom({ network: net })
   let pubKey = keyPair.getPublicKeyBuffer()
 
   let witnessScript = bitcoinjs.script.witnessPubKeyHash.output.encode(bitcoinjs.crypto.hash160(pubKey))
